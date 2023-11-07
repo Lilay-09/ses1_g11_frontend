@@ -1,0 +1,115 @@
+.sidbar_container.active {
+  width: 30vw;
+  max-width: 280px;
+  min-width: 200px;
+  background-color: white;
+  transition: width 0.3s;
+  height: 100vh;
+  overflow-x: hidden;
+}
+.dropdown_mnu {
+  max-height: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  transition: max-height 0.3s;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+._dd_container__children {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  gap: 1rem;
+  padding-left: 1rem;
+  margin-left: 4rem;
+  background-color: #f5f5f5;
+}
+
+.dropdown_mnu.active {
+  max-height: 300px;
+  transition: max-height 0.3s;
+  overflow-y: visible;
+}
+.sidbar_container .dropdown_mnu {
+  display: none;
+}
+.sidbar_container.active .dropdown_mnu {
+  display: block;
+}
+.sb_branding_logo {
+  height: 100px;
+  position: relative;
+}
+.sidbar_container {
+  width: 10vw;
+  max-width: 80px;
+  min-width: 80px;
+  transition: ease 0.5s;
+  box-shadow: 3px 0px 10px 1px rgba(0, 0, 0, 0.205);
+  height: 100vh;
+  overflow-y: scroll;
+}
+.sidbar_container.active .sb_mnu_content p {
+  display: block;
+}
+.mnu_btn_toggle {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 0.3rem;
+  top: 0.3rem;
+}
+.mnu_btn_toggle img {
+  width: 100%;
+  height: 100%;
+}
+.sb_mnu_content p {
+  white-space: nowrap;
+  display: none;
+}
+.sb_mnu_content {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  width: 100%;
+}
+.sb__mnu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.sb__mnu_icon {
+  width: 40px;
+  height: 40px;
+  margin-left: 1.1rem;
+}
+.sb__mnu_icon img {
+  width: 100%;
+  height: 100%;
+}
+.sb_mnu_content {
+  display: flex;
+}
+.sb_mnu_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* background-color: aqua; */
+  height: 80%;
+}
+.sb_mnu_btn_logout {
+  margin: 0 auto;
+}
+.sidbar_container .logout_btn {
+  display: none;
+}
+.sidbar_container.active .logout_btn {
+  display: block;
+}
+.sidbar_container.active .sb_mnu_btn_logout .sb__mnu_icon {
+  display: none;
+}

@@ -1,0 +1,12 @@
+import { ACITONS } from "./Actions";
+
+export const reducer = (state, action) => {
+  switch (action.type) {
+    case ACITONS.AUTH:
+      return { ...state, auth: action.payload };
+    case ACITONS.NOTIFY:
+      return { ...state, notify: action.payload };
+    default:
+      return state;
+  }
+};

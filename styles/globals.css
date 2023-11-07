@@ -15,7 +15,11 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
+:root {
+  --element-width: fit-content;
+}
+
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
@@ -23,4 +27,100 @@ a {
     color: white;
     background: black;
   }
+} */
+/*  layouyt  */
+
+.layout_body {
+  background-color: #f5f5f5;
+  width: 100%;
+  height: 100vh;
+}
+.layout_body {
+  display: flex;
+  width: 100%;
+}
+.layout_children_container {
+  width: 100%;
+}
+/* end layout */
+
+/* input compenent */
+.input_container {
+  width: 100%;
+  position: relative;
+  /* padding-top: 15px; */
+  /* border: 1px solid green; */
+}
+.input_container input {
+  width: 100%;
+  padding: 10px 10px;
+}
+.input_container .input:focus ~ .label,
+.input:valid ~ label {
+  top: -12px;
+  /* width: fit-content; */
+
+  /* top: 0px;
+  transform: scale(0.94) translateX(-2px);
+  color: #4485c5; */
+}
+.hide__label_line {
+  background-color: rgb(255, 255, 255);
+  height: 5px;
+  position: relative;
+  top: -10px;
+  width: 100%;
+  z-index: -1;
+  /* box-shadow: 0px 0px 0px 6px #ffffff; */
+}
+.input_container .label {
+  position: absolute;
+  color: black;
+  left: 10px;
+  top: 10px;
+  z-index: 10;
+  margin: 0 10px;
+  transition: ease-in-out 0.15s;
+}
+.input_container .line {
+}
+.input_container .input:focus ~ .line {
+  /* opacity: 1;
+  left: 0; */
+}
+/* end input component */
+/* .button {
+} */
+.active__lnk_wt_img {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.countdown {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.progressbar {
+  background-color: #ccc;
+  height: 10px;
+  width: 100%;
+  position: absolute;
+  border-radius: 5px;
+  bottom: 0px;
+  right: 0rem;
+}
+
+.progressbar div {
+  background-color: #007bff;
+  height: 100%;
+  border-radius: 5px;
+  transition: width 5s;
+}
+
+/* Customize the bar color when the countdown is low */
+.progressbar div.low-cooldown {
+  background-color: #ff56229a;
 }

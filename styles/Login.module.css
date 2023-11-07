@@ -1,0 +1,49 @@
+.login_body_ {
+  /* background-color: aqua; */
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login_card {
+  background-color: aliceblue;
+  width: 30vw;
+  height: 70%;
+}
+
+.form__login {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin: 0.8rem 1rem;
+}
+.branding_logo {
+  width: 100px;
+  height: 80px;
+}
+.branding_logo img {
+  width: 100%;
+  height: 100%;
+}
+
+/*  */
+.loadingContainer {
+  width: 100%;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.loadingBar {
+  width: 0;
+  height: 100%;
+  background-color: #3498db;
+  transition: width 10s linear;
+}
+
+.active {
+  width: 100%;
+}
