@@ -66,6 +66,7 @@ const Login = () => {
             onChange={handleInputChange}
             name="password"
             id="password"
+            isPassword={1}
           />
         </div>
         <Button name="Login" onClick={handleLogin} />

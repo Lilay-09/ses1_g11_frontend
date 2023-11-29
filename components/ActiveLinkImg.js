@@ -22,7 +22,7 @@ const ActiveLinkImg = (props) => {
           <div className={styles ? styles.sb__mnu_icon : className}>
             {/* <ImageComp imageUrl={`${img ? img : "/"}`} /> */}
           </div>
-          <p style={{ textTransform: "capitalize" }}>{props.name}</p>
+          <p style={{ textTransform: "capitalize" }}>{props.children}</p>
         </ActiveLink>
       ) : (
         <div
@@ -33,7 +33,7 @@ const ActiveLinkImg = (props) => {
           <div className={styles ? styles.sb__mnu_icon : className}>
             {/* <ImageComp imageUrl={`${img ? img : "/"}`} /> */}
           </div>
-          <p style={{ textTransform: "capitalize" }}>{props.name}</p>
+          <p>{props.name}</p>
         </div>
       )}
       {dropdown ? (

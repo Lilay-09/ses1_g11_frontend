@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { withRouter } from "next/router";
 import React, { Children, use } from "react";
 
@@ -16,7 +17,7 @@ const ActiveLink = ({ router, href, children, className }) => {
   //   position: "relative",
   // };
   return (
-    <a
+    <Link
       href={href}
       onClick={handleClick}
       className={className}
@@ -31,7 +32,7 @@ const ActiveLink = ({ router, href, children, className }) => {
       }}
     >
       {children}
-    </a>
+    </Link>
   );
 };
 

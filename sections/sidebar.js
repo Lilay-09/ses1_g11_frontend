@@ -26,12 +26,18 @@ const Sidebar = () => {
       }
     >
       <div className={styles.sb_branding_logo}>
+        <div className={styles.brand_logo}>Logo here</div>
         <div className={styles.mnu_btn_toggle} onClick={handleOpenMnu}>
           {/* <ImageComp imageUrl={"/images/arrow.png"} /> */}
+          &gt;
         </div>
       </div>
       <div className={styles.sb_mnu_container}>
         <div className={styles.sb__mnu}>
+          <ActiveLinkImg href="/" img="">
+            Dashboard
+          </ActiveLinkImg>
+          <ActiveLinkImg href="/order">Order</ActiveLinkImg>
           <ActiveLinkImg name="Warehouse" dropdown>
             <ActiveLink href={"/warehouse/daily-stock"}>Country</ActiveLink>
           </ActiveLinkImg>
@@ -70,7 +76,9 @@ const Sidebar = () => {
             name="Logout"
             width="100%"
             className={styles.logout_btn}
-          />
+          >
+            Logout
+          </Button>
         </div>
       </div>
     </div>
