@@ -23,25 +23,26 @@ const Login = () => {
       login_name: userFrom.login_name,
       password: userFrom.password,
     };
-    // const res = await fetchData("POST", "auth/login", login_body, null);
-    // const data = await res;
-    // if (data.status_code != 200) {
-    //   dispatch({
-    //     type: "NOTIFY",
-    //     payload: { error: res.error_message },
-    //   });
-    // }
+    const res = await fetchData("POST", "auth/login", login_body, null);
+    const data = await res;
+    console.log(data);
+    if (data.status_code != 200) {
+      return dispatch({
+        type: "NOTIFY",
+        payload: { error: res.error_message },
+      });
+    }
 
     dispatch({
       type: "NOTIFY",
       payload: { success: "Logged in" },
     });
-    // dispatch({
-    //   type: "AUTH",
-    //   payload: { token: data.access_token, user: data.user },
-    // });
-    // localStorage.setItem("__auth__user__", true);
-    // cookie.set("__auth__login__", data.access_token);
+    dispatch({
+      type: "AUTH",
+      payload: { token: data.user.access_token, user: data.user.user_class },
+    });
+    localStorage.setItem("__auth__user__", true);
+    cookie.set("__auth__login__", data.user.access_token);
   };
   if (isUserAuthenticated()) {
     router.push("/");

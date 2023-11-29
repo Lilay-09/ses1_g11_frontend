@@ -6,6 +6,8 @@ export const reducer = (state, action) => {
       return { ...state, auth: action.payload };
     case ACITONS.NOTIFY:
       return { ...state, notify: action.payload };
+    case ACITONS.MODAL:
+      return { ...state, modal: action.payload };
     default:
       return state;
   }

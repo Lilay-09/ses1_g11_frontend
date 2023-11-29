@@ -7,6 +7,7 @@ const Input = ({
   onChange,
   className,
   name,
+  value,
 }) => {
   return (
     <div className="input_container">
@@ -17,6 +18,7 @@ const Input = ({
         id={id}
         onChange={onChange}
         name={name}
+        value={value}
       />
       <label className="label" htmlFor={id}>
         {placeholder}

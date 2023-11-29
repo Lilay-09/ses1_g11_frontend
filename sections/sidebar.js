@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import ActiveLinkImg from "../components/ActiveLinkImg";
 import cookie from "js-cookie";
 import { useRouter } from "next/router";
+import Dropdown from "../components/ActiveLinkImg";
 const Sidebar = () => {
   const router = useRouter();
   const [openSideBar, setSideBar] = useState(true);
@@ -31,19 +32,26 @@ const Sidebar = () => {
       </div>
       <div className={styles.sb_mnu_container}>
         <div className={styles.sb__mnu}>
-          <div className={styles.sb_mnu_content}>
+          <ActiveLinkImg name="Warehouse" dropdown>
+            <ActiveLink href={"/warehouse/daily-stock"}>Country</ActiveLink>
+          </ActiveLinkImg>
+          <ActiveLinkImg name="Setting" dropdown>
+            <ActiveLink href={"/setting/country"}>Country</ActiveLink>
+            <ActiveLink href={"/setting/city"}>city</ActiveLink>
+          </ActiveLinkImg>
+
+          {/* <div className={styles.sb_mnu_content}>
             <ActiveLinkImg name="Dashboard" href="/" />
           </div>
+
           <div className={styles.sb_mnu_content}>
-            <ActiveLinkImg name="Pages" dropdown>
-              <ActiveLink href={"/website/home"}>Home</ActiveLink>
-              <ActiveLink href={"/website/shop"}>Shop</ActiveLink>
+            <ActiveLinkImg name="Setting" dropdown>
+              <ActiveLink href={"/setting/country"}>Country</ActiveLink>
             </ActiveLinkImg>
           </div>
           <div className={styles.sb_mnu_content}>
             <ActiveLinkImg name="Warehouse" dropdown>
-              <ActiveLink href={"/warehouse"}>Warehouse</ActiveLink>
-              {/* <ActiveLink href={"/website/shop"}>Shop</ActiveLink> */}
+              <ActiveLink href={"warehouse/daily-stock"}>Warehouse</ActiveLink>
             </ActiveLinkImg>
           </div>
           <div className={styles.sb_mnu_content}>
@@ -51,7 +59,7 @@ const Sidebar = () => {
           </div>
           <div className={styles.sb_mnu_content}>
             <ActiveLinkImg />
-          </div>
+          </div> */}
         </div>
         <div className={styles.sb_mnu_btn_logout}>
           <div className={styles.sb__mnu_icon}>
