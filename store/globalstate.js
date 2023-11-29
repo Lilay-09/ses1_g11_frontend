@@ -10,6 +10,13 @@ export const GlobalState = (props) => {
   const initialState = {
     auth: {},
     notify: {},
+
+    //** initial modal actions */
+    modal: {
+      add: false,
+      update: false,
+      delete: false,
+    },
   };
 
   useEffect(() => {

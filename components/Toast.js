@@ -44,7 +44,7 @@ const Toast = ({
       };
     }
 
-    console.log(state.notify);
+    // console.log(state.notify);
   }, [dispatch, state, coolDown, isNotify, canClick]);
 
   const toastStyle = {
@@ -56,6 +56,7 @@ const Toast = ({
     minHeight: "150px",
     top: "1rem",
     right: "0rem",
+    zIndex: 1000,
     overFlow: "hidden",
     borderRadius: "15px",
     boxShadow: "0px 1px 7px 3px rgba(0, 0, 0, 0.18)",
@@ -107,7 +108,7 @@ const Toast = ({
               setCanClick(false);
             }}
           >
-            X {coolDown}
+            X
           </button>
         </div>
         <div style={bodyMSG}>

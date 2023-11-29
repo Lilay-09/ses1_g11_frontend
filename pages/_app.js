@@ -1,3 +1,4 @@
+import Modal from "../components/Modal";
 import Notify from "../components/Notify";
 import Layout from "../sections/Layout";
 import { GlobalState } from "../store/globalstate";

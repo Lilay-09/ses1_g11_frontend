@@ -7,6 +7,13 @@
   height: 100vh;
   overflow-x: hidden;
 }
+
+.sidbar_container::-webkit-scrollbar {
+  display: none;
+}
+.dropdown_mnu::-webkit-scrollbar {
+  display: none;
+}
 .dropdown_mnu {
   max-height: 0;
   overflow-y: hidden;
