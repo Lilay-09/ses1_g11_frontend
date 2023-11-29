@@ -33,7 +33,7 @@ const Country = (props) => {
 
   return (
     <Body title="Country">
-      <Button
+      {/* <Button
         onClick={() => {
           handleOpenModal();
         }}
@@ -50,7 +50,7 @@ const Country = (props) => {
           />
           <Button onClick={saveHandler}>Save</Button>
         </div>
-      </Modal>
+      </Modal> */}
     </Body>
   );
 };
