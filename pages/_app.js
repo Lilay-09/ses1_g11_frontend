@@ -1,6 +1,6 @@
 import Modal from "../components/Modal";
 import Notify from "../components/Notify";
-import Layout from "../sections/Layout";
+import Layout from "../sections/layout";
 import { GlobalState } from "../store/globalstate";
 import "../styles/globals.css";
 

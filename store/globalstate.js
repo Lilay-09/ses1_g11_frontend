@@ -1,7 +1,6 @@
 import React, { createContext, useEffect, useReducer } from "react";
 
 import cookie from "js-cookie";
-import { isUserAuthenticated } from "../utils/isUserAuthenicated";
 import { useRouter } from "next/router";
 import { reducer } from "./reducer";
 export const DataContext = createContext();

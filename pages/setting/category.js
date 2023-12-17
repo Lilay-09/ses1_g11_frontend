@@ -8,7 +8,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import useForm from "../../utils/useForm";
 const fetcher = async () => {
-  const res = await fetchData("POST", "country/list");
+  const res = await fetchData("POST", "category/list");
   const data = await res;
   return data;
 };
@@ -47,7 +47,7 @@ const Country = () => {
   };
 
   const handleSave = async () => {
-    const res = await fetchData("POST", "country/save", formData);
+    const res = await fetchData("POST", "category/save", formData);
     if (res.status == "OK") {
       dispatch({
         type: "MODAL",
@@ -58,7 +58,7 @@ const Country = () => {
   };
 
   const handleDelete = async () => {
-    const res = await fetchData("POST", "country/delete", formData);
+    const res = await fetchData("POST", "category/delete", formData);
     if (res.status == "OK") {
       dispatch({ type: "NOTIFY", payload: { success: "Delete" } });
     } else {
@@ -66,8 +66,17 @@ const Country = () => {
     }
   };
 
+  const handleAddNew = async () => {
+    resetForm();
+    dispatch({
+      type: "MODAL",
+      payload: { add: true },
+    });
+  };
+
   return (
     <MainBody>
+      <Button onClick={handleAddNew}>Add Category</Button>
       <table className="custom-table">
         <thead>
           <tr>
@@ -104,7 +113,7 @@ const Country = () => {
           ))}
         </tbody>
       </table>
-      <Modal width="50%" title="Modify">
+      <Modal width="50%" title={state.modal?.add ? "Add" : "Modify"}>
         <div
           style={{
             display: "flex",
@@ -123,7 +132,7 @@ const Country = () => {
               handleSave();
             }}
           >
-            Update
+            {state.modal?.add ? "Add" : "Update"}
           </Button>
         </div>
       </Modal>

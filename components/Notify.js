@@ -9,12 +9,17 @@ const Notify = () => {
   return (
     <>
       {notify.error && (
-        <Toast bgColor="pink" msg={{ msg: notify.error, title: "Error" }} />
+        <Toast
+          bgColor="#BB3D11"
+          titleColor={"white"}
+          bodyMsgColor={"white"}
+          msg={{ msg: notify.error, title: "Error" }}
+        />
       )}
 
       {notify.success && (
         <Toast
-          bgColor="green"
+          bgColor="#DB860A"
           msg={{ msg: notify.success, title: "Success" }}
           // handler={() => dispatch({ type: "NOTIFY", payload: {} })}
         />

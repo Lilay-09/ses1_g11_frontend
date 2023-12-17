@@ -1,20 +1,25 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../styles/DropdownList.module.css";
-const DropDownList = ({ children, data }) => {
-  const [initialTitle, setInitialTitle] = useState();
-  const handleSeletectedValue = (e, id) => {
-    const selectedValue = e.target.textContent;
-    setInitialTitle(selectedValue);
-  };
-  return (
-    <div className={styles.dropdown_container}>
-      <h5 className={styles.selected_initial}>{initialTitle}</h5>
 
-      {/* <div onClick={(e) => handleSeletectedValue(e, "1")}>sdf1</div>
-      <div onClick={handleSeletectedValue}>sdf</div>
-      <div>sdf</div> */}
+const Dropdown = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen((prevState) => !prevState);
+  };
+
+  return (
+    <div className={styles.dropdown}>
+      <div className={styles.dropdownToggle} onClick={toggleDropdown}>
+        <span style={{ fontSize: "18px", fontWeight: "bolder", color: "grey" }}>
+          {props.name}
+        </span>
+      </div>
+      <div className={`${styles.dropdownContent} ${isOpen ? styles.show : ""}`}>
+        {isOpen && <div className={styles.slideIn}>{props.children}</div>}
+      </div>
     </div>
   );
 };
 
-export default DropDownList;
+export default Dropdown;

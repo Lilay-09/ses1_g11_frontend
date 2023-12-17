@@ -1,9 +1,44 @@
-.dropdown_container {
-  max-width: 280px;
-  min-width: 230px;
-  width: 20vw;
-  background-color: red;
+/* Dropdown container styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
 }
-.selected_initial {
+
+/* Dropdown toggle button styles */
+.dropdownToggle {
+  width: 100%;
   text-align: center;
+}
+
+/* Dropdown content styles */
+.dropdownContent {
+  width: 100%;
+  z-index: 1;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out; /* Use max-height for slide effect */
+  max-height: 0;
+}
+
+/* Show the dropdown content when it's open */
+.show {
+  max-height: 500px; /* Adjust as needed; set a reasonable max height */
+  transition: max-height 0.3s ease-in-out;
+}
+.slideIn {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transform: translateY(-20px); /* Initially move children up */
+}
+.slideIn .dropdownContent {
+  position: absolute;
+}
+
+.show .slideIn {
+  opacity: 1;
+  transform: translateY(0); /* Slide children down */
 }

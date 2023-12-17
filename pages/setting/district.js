@@ -7,20 +7,36 @@ import { DataContext } from "../../store/globalstate";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import useForm from "../../utils/useForm";
+import OptionSelect from "../../components/OptionSelect";
+
 const fetcher = async () => {
-  const res = await fetchData("POST", "country/list");
+  const res = await fetchData("POST", "district/list");
   const data = await res;
   return data;
 };
-const Country = () => {
-  const { data, error } = useSWR("country/list", fetcher);
+const getCity = async () => {
+  const res = await fetchData("POST", "option/city");
+  const data = await res;
+  return data;
+};
+
+const DistrictScreen = () => {
+  const { data: optionCity, error: errorCity } = useSWR("option_city", getCity);
+  const { data: countryData, error: errorCountry } = useSWR(
+    "countries",
+    fetcher
+  );
   const { state, dispatch } = useContext(DataContext);
   const [showAction, setShowAction] = useState({ show: false, id: 0 });
-  const countries = data?.data?.data;
+  const [selectedValue, setSelectedValue] = useState(null);
+  const countries = countryData?.data?.data;
+  const opt_city = optionCity?.data;
+
   const actionRef = useRef(null);
   const initialFormState = {
     id: 0,
     name: "",
+    city_id: 0,
   };
   const { formData, handleInputChange, resetForm } = useForm(initialFormState);
 
@@ -36,8 +52,8 @@ const Country = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  if (error) return <MainBody>Something went wrong</MainBody>;
-  if (!data) return <MainBody>Loading</MainBody>;
+  if (errorCountry) return <MainBody>Something went wrong</MainBody>;
+  if (!countryData) return <MainBody>Loading</MainBody>;
 
   const toggleAction = (id) => {
     setShowAction((prev) => ({
@@ -47,27 +63,51 @@ const Country = () => {
   };
 
   const handleSave = async () => {
-    const res = await fetchData("POST", "country/save", formData);
-    if (res.status == "OK") {
-      dispatch({
-        type: "MODAL",
-        payload: { update: false },
+    const res = await fetchData("POST", "district/save", formData, null);
+    const data = await res;
+    if (data.status_code != 200) {
+      return dispatch({
+        type: "NOTIFY",
+        payload: { error: res.error_message },
       });
-      dispatch({ type: "NOTIFY", payload: { success: "Updated" } });
     }
+    dispatch({
+      type: "MODAL",
+      payload: { update: false },
+    });
+    dispatch({ type: "NOTIFY", payload: { success: "Updated" } });
   };
 
   const handleDelete = async () => {
-    const res = await fetchData("POST", "country/delete", formData);
+    const res = await fetchData("POST", "district/delete", formData);
     if (res.status == "OK") {
-      dispatch({ type: "NOTIFY", payload: { success: "Delete" } });
-    } else {
-      dispatch({ type: "NOTIFY", payload: { error: res.error_message } });
-    }
+      dispatch({ action: "NOTIFY", payload: { success: "Updated" } });
+    } else
+      return dispatch({
+        action: "NOTIFY",
+        payload: { error: res.error_message },
+      });
+  };
+
+  const handleSelectChange = (opt_value) => {
+    setSelectedValue(opt_value.id);
+    formData.country_id = parseInt(opt_value.id, 10);
+  };
+
+  const handleChangeAddNew = (opt_value) => {
+    setSelectedValue(opt_value.id);
+  };
+
+  const handleAddNew = async () => {
+    dispatch({
+      type: "MODAL",
+      payload: { add: true },
+    });
   };
 
   return (
     <MainBody>
+      <Button onClick={handleAddNew}>Add New</Button>
       <table className="custom-table">
         <thead>
           <tr>
@@ -94,7 +134,10 @@ const Country = () => {
                       ref={actionRef}
                       style={{ position: "absolute", width: "100%" }}
                     >
-                      {tableAction(c.id, dispatch, handleDelete)}
+                      {tableAction(c.id, dispatch, [
+                        handleDelete,
+                        handleSelectChange,
+                      ])}
                       {((formData.name = c.name), (formData.id = c.id))}
                     </div>
                   )}
@@ -118,6 +161,14 @@ const Country = () => {
             name="name"
             onChange={handleInputChange}
           />
+          <OptionSelect
+            pk="id"
+            show_key="name"
+            data={opt_city}
+            value={selectedValue}
+            onChange={handleChangeAddNew}
+          ></OptionSelect>
+
           <Button
             onClick={() => {
               handleSave();
@@ -127,11 +178,48 @@ const Country = () => {
           </Button>
         </div>
       </Modal>
+      <Modal width="50%" title="Modify">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            gap: "1rem",
+          }}
+        >
+          <Input
+            value={formData.name}
+            name="name"
+            onChange={handleInputChange}
+          />
+          <OptionSelect
+            pk="id"
+            show_key="name"
+            data={opt_city}
+            value={selectedValue}
+            onChange={handleChangeAddNew}
+          ></OptionSelect>
+
+          <Button
+            onClick={() => {
+              handleSave();
+            }}
+          >
+            Save
+          </Button>
+        </div>
+      </Modal>
     </MainBody>
   );
 };
 
-const tableAction = (id, dispatch, handleDelete) => {
+const tableAction = (id, dispatch, ...callbacks) => {
+  const handleDelete = callbacks.find(
+    (callback) => typeof callback === "function"
+  );
+  const handleOptChange = callbacks.find(
+    (callback) => typeof callback === "function"
+  );
   const handleEdit = (id) => {
     dispatch({
       type: "MODAL",
@@ -152,4 +240,4 @@ const tableAction = (id, dispatch, handleDelete) => {
   );
 };
 
-export default Country;
+export default DistrictScreen;

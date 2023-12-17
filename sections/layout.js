@@ -1,11 +1,11 @@
 import React from "react";
+import Protected from "../utils/Protected";
 import Sidebar from "./sidebar";
 import { useRouter } from "next/router";
-import Protected from "../utils/Protected";
+import { isUserAuthenticated } from "../utils/isUserAuthenicated";
 
 const Layout = (props) => {
   const router = useRouter();
-
   return (
     <div className="layout_body">
       {router.pathname !== "/login" && <Sidebar />}

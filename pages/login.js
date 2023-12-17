@@ -25,7 +25,6 @@ const Login = () => {
     };
     const res = await fetchData("POST", "auth/login", login_body, null);
     const data = await res;
-    console.log(data);
     if (data.status_code != 200) {
       return dispatch({
         type: "NOTIFY",
@@ -69,7 +68,9 @@ const Login = () => {
             isPassword={1}
           />
         </div>
-        <Button name="Login" onClick={handleLogin} />
+        <Button name="Login" onClick={handleLogin}>
+          Login
+        </Button>
       </div>
     </div>
   );
