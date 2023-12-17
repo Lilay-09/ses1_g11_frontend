@@ -8,15 +8,15 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import useForm from "../../utils/useForm";
 const fetcher = async () => {
-  const res = await fetchData("POST", "country/list");
+  const res = await fetchData("POST", "brand/list");
   const data = await res;
   return data;
 };
-const Country = () => {
-  const { data, error } = useSWR("country/list", fetcher);
+const BrandScreen = () => {
+  const { data, error } = useSWR("brand", fetcher);
   const { state, dispatch } = useContext(DataContext);
   const [showAction, setShowAction] = useState({ show: false, id: 0 });
-  const countries = data?.data?.data;
+  const brands = data?.data?.data;
   const actionRef = useRef(null);
   const initialFormState = {
     id: 0,
@@ -47,7 +47,7 @@ const Country = () => {
   };
 
   const handleSave = async () => {
-    const res = await fetchData("POST", "country/save", formData);
+    const res = await fetchData("POST", "brand/save", formData);
     if (res.status == "OK") {
       dispatch({
         type: "MODAL",
@@ -58,7 +58,7 @@ const Country = () => {
   };
 
   const handleDelete = async () => {
-    const res = await fetchData("POST", "country/delete", formData);
+    const res = await fetchData("POST", "brand/delete", formData);
     if (res.status == "OK") {
       dispatch({ type: "NOTIFY", payload: { success: "Delete" } });
     } else {
@@ -66,8 +66,17 @@ const Country = () => {
     }
   };
 
+  const handleAddNew = async () => {
+    resetForm();
+    dispatch({
+      type: "MODAL",
+      payload: { add: true },
+    });
+  };
+
   return (
     <MainBody>
+      <Button onClick={handleAddNew}>New Brand</Button>
       <table className="custom-table">
         <thead>
           <tr>
@@ -77,7 +86,7 @@ const Country = () => {
           </tr>
         </thead>
         <tbody>
-          {countries.map((c, i) => (
+          {brands.map((c, i) => (
             <tr key={i}>
               <td>{c.name}</td>
               <td>{c?.create_user}</td>
@@ -104,7 +113,7 @@ const Country = () => {
           ))}
         </tbody>
       </table>
-      <Modal width="50%" title="Modify">
+      <Modal width="50%" title={state.modal?.add ? "Add" : "Modify"}>
         <div
           style={{
             display: "flex",
@@ -123,7 +132,7 @@ const Country = () => {
               handleSave();
             }}
           >
-            Update
+            {state.modal?.add ? "Add" : "Update"}
           </Button>
         </div>
       </Modal>
@@ -152,4 +161,4 @@ const tableAction = (id, dispatch, handleDelete) => {
   );
 };
 
-export default Country;
+export default BrandScreen;

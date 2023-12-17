@@ -124,3 +124,16 @@
 .sidbar_container.active .sb_mnu_btn_logout .sb__mnu_icon {
   display: none;
 }
+
+.expandableList {
+}
+
+.listContainer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.listContainer.expanded {
+  max-height: 1000px; /* Adjust as needed */
+}

@@ -6,7 +6,9 @@ import Button from "../components/Button";
 import ActiveLinkImg from "../components/ActiveLinkImg";
 import cookie from "js-cookie";
 import { useRouter } from "next/router";
-import Dropdown from "../components/ActiveLinkImg";
+import ExpandableList from "../components/ExpandList";
+import Dropdown from "../components/DropDownList";
+import Link from "next/link";
 const Sidebar = () => {
   const router = useRouter();
   const [openSideBar, setSideBar] = useState(true);
@@ -34,38 +36,21 @@ const Sidebar = () => {
       </div>
       <div className={styles.sb_mnu_container}>
         <div className={styles.sb__mnu}>
-          <ActiveLinkImg href="/" img="">
-            Dashboard
+          <ActiveLinkImg href="/">Dashboard</ActiveLinkImg>
+          <ActiveLinkImg name="Product" dropdown>
+            <ActiveLink href={"/product"}>Add Product</ActiveLink>
           </ActiveLinkImg>
-          <ActiveLinkImg href="/order">Order</ActiveLinkImg>
-          <ActiveLinkImg name="Warehouse" dropdown>
-            <ActiveLink href={"/warehouse/daily-stock"}>Country</ActiveLink>
+          <ActiveLinkImg name="Purchase Order" dropdown>
+            <ActiveLink href={"/purchase-order"}>Purchase</ActiveLink>
           </ActiveLinkImg>
           <ActiveLinkImg name="Setting" dropdown>
             <ActiveLink href={"/setting/country"}>Country</ActiveLink>
-            <ActiveLink href={"/setting/city"}>city</ActiveLink>
+            <ActiveLink href={"/setting/city"}>City</ActiveLink>
+            <ActiveLink href={"/setting/district"}>District</ActiveLink>
+            <ActiveLink href={"/setting/brand"}>Brand</ActiveLink>
+            <ActiveLink href={"/setting/category"}>Category</ActiveLink>
+            <ActiveLink href={"/setting/group"}>Group</ActiveLink>
           </ActiveLinkImg>
-
-          {/* <div className={styles.sb_mnu_content}>
-            <ActiveLinkImg name="Dashboard" href="/" />
-          </div>
-
-          <div className={styles.sb_mnu_content}>
-            <ActiveLinkImg name="Setting" dropdown>
-              <ActiveLink href={"/setting/country"}>Country</ActiveLink>
-            </ActiveLinkImg>
-          </div>
-          <div className={styles.sb_mnu_content}>
-            <ActiveLinkImg name="Warehouse" dropdown>
-              <ActiveLink href={"warehouse/daily-stock"}>Warehouse</ActiveLink>
-            </ActiveLinkImg>
-          </div>
-          <div className={styles.sb_mnu_content}>
-            <ActiveLinkImg name="Dashboard" href="/" />
-          </div>
-          <div className={styles.sb_mnu_content}>
-            <ActiveLinkImg />
-          </div> */}
         </div>
         <div className={styles.sb_mnu_btn_logout}>
           <div className={styles.sb__mnu_icon}>

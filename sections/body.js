@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../styles/Body.module.css";
 import { useRouter } from "next/router";
 import Input from "../components/Input";
-const Body = (props) => {
+const MainBody = (props) => {
   const router = useRouter();
   return (
     <div className={styles.body_container}>
@@ -41,4 +41,4 @@ const Body = (props) => {
   );
 };
 
-export default Body;
+export default MainBody;

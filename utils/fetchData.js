@@ -19,8 +19,10 @@ export const fetchData = async (method, url, body, ctx) => {
   });
   const data = await res.json();
 
-  // if (data.status_code !== 200) {
-  //   return;
-  // }
+  if (data.status_code !== 200) {
+    if (data.error_message == "Token expired.") {
+      cookie.remove("__auth__login__");
+    }
+  }
   return data;
 };

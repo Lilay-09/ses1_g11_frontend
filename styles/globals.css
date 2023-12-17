@@ -125,50 +125,6 @@ a {
   background-color: #ff56229a;
 }
 
-/*
-/* Apply some basic styling to the table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-}
-
-/* Style table header */
-th,
-td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-/* Add some hover effect on table rows */
-tr:hover {
-  background-color: #f5f5f5;
-}
-
-/* Style the first column differently, assuming it contains row headers */
-td:first-child {
-  font-weight: bold;
-}
-
-/* Style alternate rows differently for better readability */
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-/* Style the header row */
-th {
-  background-color: #4caf50;
-  color: white;
-}
-
-/* Style a specific column, for example, the second column */
-td:nth-child(2) {
-  color: blue;
-  font-style: italic;
-}
-/* Table.css */
-
 .table-container {
   width: 80%;
   margin: 20px auto;
@@ -188,9 +144,58 @@ td:nth-child(2) {
 }
 
 .custom-table th {
-  background-color: #f2f2f2;
+  background-color: white;
+  color: black;
 }
 
-.custom-table tbody tr:nth-child(even) {
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.table__action {
+  width: "100%";
+  background-color: red;
+  position: absolute;
+  padding: 10px;
+}
+/* tr:hover {
+  background-color: #684343;
+  color: white;
+} */
+
+/* th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+td:first-child {
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
   background-color: #f9f9f9;
 }
+
+th {
+  background-color: #4caf50;
+  color: white;
+}
+
+td:nth-child(2) {
+  color: blue;
+  font-style: italic;
+} */

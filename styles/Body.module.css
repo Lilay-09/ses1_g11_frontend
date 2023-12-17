@@ -53,9 +53,9 @@
   /* background-color: rgba(0, 0, 0, 0.411); */
   /* z-index: 1; */
   position: relative;
-  height: 82.5vh;
-  margin: 15px 10px;
-  overflow-y: auto;
+  height: 86vh;
+  margin: 15px 0px;
+  overflow-y: hidden;
   box-shadow: 0px 1px 10px 1px rgba(0, 0, 0, 0.46);
 }
 .children__props::-webkit-scrollbar {
